@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -32,7 +33,7 @@ namespace API.Entities
         [DataType(DataType.EmailAddress)]
         public string BestEmail { get; set; }
         [DataType(DataType.PhoneNumber)]
-        public PhoneAttribute BestPhone { get; set; }
+        public string BestPhone { get; set; }
         public string Athletics { get; set; }
         public string Arts { get; set; }
         public string ExtraCurricular { get; set; }
@@ -41,6 +42,12 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(5)")]
         public string GPA { get; set; }
         public string DreamJob { get; set; }
+        public ICollection<Photo> Photos { get; set; }
+        public ICollection<College> Colleges { get; set; }
+        public ICollection<EmpType> EmpTypes { get; set; }
+        public ICollection<HomeCity> HomeCities { get; set; }
+        public ICollection<Major> Majors { get; set; }
+        public ICollection<Position> Positions { get; set; }
 
     }
 }
