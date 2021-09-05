@@ -6,24 +6,27 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  title = 'ICF Connect';
-  users: any;
-
-  constructor(private http: HttpClient) {}
-
-  ngOnInit() {
-    this.getUsers();
-  }
-
-  getUsers() {
-    this.http.get('https://localhost:5001/api/users').subscribe(
-      (response) => {
-        this.users = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+export class AppComponent {
+  title = 'client';
 }
+// export class AppComponent implements OnInit {
+//   title = 'ICF Connect';
+//   users: any;
+
+//   constructor(private http: HttpClient) {}
+
+//   ngOnInit() {
+//     this.getUsers();
+//   }
+
+//   getUsers() {
+//     this.http.get('https://localhost:5001/api/users').subscribe(
+//       (response) => {
+//         this.users = response;
+//       },
+//       (error) => {
+//         console.log(error);
+//       }
+//     );
+//   }
+// }
