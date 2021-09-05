@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210904155230_initialcreate")]
-    partial class initialcreate
+    [Migration("20210904164239_newstart")]
+    partial class newstart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,73 +28,10 @@ namespace API.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AcademicPlus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("AppUserType")
-                        .HasColumnType("nvarchar(8)");
-
-                    b.Property<string>("Arts")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Athletics")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BestEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BestPhone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClassYear")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("ConfirmPassword")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DreamJob")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmpInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmpName")
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("EmpNum")
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("ExtraCurricular")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("GPA")
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<DateTime>("GradDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("LastActive")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkPlus")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AppUserId");
@@ -125,7 +62,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("College");
+                    b.ToTable("Colleges");
                 });
 
             modelBuilder.Entity("API.Entities.EmpType", b =>
@@ -145,7 +82,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("EmpType");
+                    b.ToTable("EmpTypes");
                 });
 
             modelBuilder.Entity("API.Entities.HomeCity", b =>
@@ -165,7 +102,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("HomeCity");
+                    b.ToTable("HomeCities");
                 });
 
             modelBuilder.Entity("API.Entities.Major", b =>
@@ -185,7 +122,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Major");
+                    b.ToTable("Majors");
                 });
 
             modelBuilder.Entity("API.Entities.Photo", b =>
@@ -229,7 +166,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Photo");
+                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("API.Entities.Position", b =>
@@ -282,7 +219,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Position");
+                    b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("API.Entities.College", b =>

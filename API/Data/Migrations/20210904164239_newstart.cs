@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Data.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class newstart : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,28 +14,7 @@ namespace API.Data.Migrations
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(30)", nullable: true),
-                    AppUserType = table.Column<string>(type: "nvarchar(8)", nullable: true),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastActive = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmpName = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    EmpNum = table.Column<string>(type: "nvarchar(20)", nullable: true),
-                    EmpInfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClassYear = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    GradDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BestEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BestPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Athletics = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Arts = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ExtraCurricular = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AcademicPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WorkPlus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GPA = table.Column<string>(type: "nvarchar(5)", nullable: true),
-                    DreamJob = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +22,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "College",
+                name: "Colleges",
                 columns: table => new
                 {
                     CollegeId = table.Column<int>(type: "int", nullable: false)
@@ -55,9 +34,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_College", x => x.CollegeId);
+                    table.PrimaryKey("PK_Colleges", x => x.CollegeId);
                     table.ForeignKey(
-                        name: "FK_College_Users_AppUserId",
+                        name: "FK_Colleges_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -65,7 +44,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmpType",
+                name: "EmpTypes",
                 columns: table => new
                 {
                     EmpTypeId = table.Column<int>(type: "int", nullable: false)
@@ -75,9 +54,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmpType", x => x.EmpTypeId);
+                    table.PrimaryKey("PK_EmpTypes", x => x.EmpTypeId);
                     table.ForeignKey(
-                        name: "FK_EmpType_Users_AppUserId",
+                        name: "FK_EmpTypes_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -85,7 +64,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HomeCity",
+                name: "HomeCities",
                 columns: table => new
                 {
                     HomeCityId = table.Column<int>(type: "int", nullable: false)
@@ -95,9 +74,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HomeCity", x => x.HomeCityId);
+                    table.PrimaryKey("PK_HomeCities", x => x.HomeCityId);
                     table.ForeignKey(
-                        name: "FK_HomeCity_Users_AppUserId",
+                        name: "FK_HomeCities_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -105,7 +84,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Major",
+                name: "Majors",
                 columns: table => new
                 {
                     MajorId = table.Column<int>(type: "int", nullable: false)
@@ -115,9 +94,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Major", x => x.MajorId);
+                    table.PrimaryKey("PK_Majors", x => x.MajorId);
                     table.ForeignKey(
-                        name: "FK_Major_Users_AppUserId",
+                        name: "FK_Majors_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -125,7 +104,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Photo",
+                name: "Photos",
                 columns: table => new
                 {
                     PhotoId = table.Column<int>(type: "int", nullable: false)
@@ -143,9 +122,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photo", x => x.PhotoId);
+                    table.PrimaryKey("PK_Photos", x => x.PhotoId);
                     table.ForeignKey(
-                        name: "FK_Photo_Users_AppUserId",
+                        name: "FK_Photos_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -153,7 +132,7 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Position",
+                name: "Positions",
                 columns: table => new
                 {
                     PositionId = table.Column<int>(type: "int", nullable: false)
@@ -174,9 +153,9 @@ namespace API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Position", x => x.PositionId);
+                    table.PrimaryKey("PK_Positions", x => x.PositionId);
                     table.ForeignKey(
-                        name: "FK_Position_Users_AppUserId",
+                        name: "FK_Positions_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -184,55 +163,55 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_College_AppUserId",
-                table: "College",
+                name: "IX_Colleges_AppUserId",
+                table: "Colleges",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmpType_AppUserId",
-                table: "EmpType",
+                name: "IX_EmpTypes_AppUserId",
+                table: "EmpTypes",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HomeCity_AppUserId",
-                table: "HomeCity",
+                name: "IX_HomeCities_AppUserId",
+                table: "HomeCities",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Major_AppUserId",
-                table: "Major",
+                name: "IX_Majors_AppUserId",
+                table: "Majors",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Photo_AppUserId",
-                table: "Photo",
+                name: "IX_Photos_AppUserId",
+                table: "Photos",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Position_AppUserId",
-                table: "Position",
+                name: "IX_Positions_AppUserId",
+                table: "Positions",
                 column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "College");
+                name: "Colleges");
 
             migrationBuilder.DropTable(
-                name: "EmpType");
+                name: "EmpTypes");
 
             migrationBuilder.DropTable(
-                name: "HomeCity");
+                name: "HomeCities");
 
             migrationBuilder.DropTable(
-                name: "Major");
+                name: "Majors");
 
             migrationBuilder.DropTable(
-                name: "Photo");
+                name: "Photos");
 
             migrationBuilder.DropTable(
-                name: "Position");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Users");
