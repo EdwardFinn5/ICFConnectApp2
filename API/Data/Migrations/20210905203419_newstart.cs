@@ -8,17 +8,72 @@ namespace API.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "EmpNames",
+                columns: table => new
+                {
+                    EmpNameId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyName = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmpNames", x => x.EmpNameId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmpTypes",
+                columns: table => new
+                {
+                    EmpTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmpTypeName = table.Column<string>(type: "nvarchar(40)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmpTypes", x => x.EmpTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Majors",
+                columns: table => new
+                {
+                    MajorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MajorName = table.Column<string>(type: "nvarchar(60)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Majors", x => x.MajorId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     AppUserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true)
+                    FirstName = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    UserType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmpName = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    EmpType = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    Major = table.Column<string>(type: "nvarchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.AppUserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserTypes",
+                columns: table => new
+                {
+                    UserTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTypes", x => x.UserTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,26 +99,6 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmpTypes",
-                columns: table => new
-                {
-                    EmpTypeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpTypeName = table.Column<string>(type: "nvarchar(40)", nullable: true),
-                    AppUserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmpTypes", x => x.EmpTypeId);
-                    table.ForeignKey(
-                        name: "FK_EmpTypes_Users_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "Users",
-                        principalColumn: "AppUserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HomeCities",
                 columns: table => new
                 {
@@ -77,26 +112,6 @@ namespace API.Data.Migrations
                     table.PrimaryKey("PK_HomeCities", x => x.HomeCityId);
                     table.ForeignKey(
                         name: "FK_HomeCities_Users_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "Users",
-                        principalColumn: "AppUserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Majors",
-                columns: table => new
-                {
-                    MajorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MajorName = table.Column<string>(type: "nvarchar(60)", nullable: true),
-                    AppUserId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Majors", x => x.MajorId);
-                    table.ForeignKey(
-                        name: "FK_Majors_Users_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "Users",
                         principalColumn: "AppUserId",
@@ -168,18 +183,8 @@ namespace API.Data.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmpTypes_AppUserId",
-                table: "EmpTypes",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_HomeCities_AppUserId",
                 table: "HomeCities",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Majors_AppUserId",
-                table: "Majors",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
@@ -199,6 +204,9 @@ namespace API.Data.Migrations
                 name: "Colleges");
 
             migrationBuilder.DropTable(
+                name: "EmpNames");
+
+            migrationBuilder.DropTable(
                 name: "EmpTypes");
 
             migrationBuilder.DropTable(
@@ -212,6 +220,9 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Positions");
+
+            migrationBuilder.DropTable(
+                name: "UserTypes");
 
             migrationBuilder.DropTable(
                 name: "Users");

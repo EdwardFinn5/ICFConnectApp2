@@ -9,7 +9,7 @@ namespace API.Entities
         public int MajorId { get; set; }
         [Column(TypeName = "nvarchar(60)")]
         public string MajorName { get; set; }
-        public virtual AppUser AppUser { get; set; }
-        public int AppUserId { get; set; }
+        // public virtual AppUser AppUser { get; set; }
+        // public int AppUserId { get; set; }
     }
 }

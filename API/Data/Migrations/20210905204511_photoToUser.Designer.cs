@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210904164239_newstart")]
-    partial class newstart
+    [Migration("20210905204511_photoToUser")]
+    partial class photoToUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,10 +28,22 @@ namespace API.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("EmpName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("EmpType")
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Major")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("UserType")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AppUserId");
@@ -65,6 +77,21 @@ namespace API.Data.Migrations
                     b.ToTable("Colleges");
                 });
 
+            modelBuilder.Entity("API.Entities.EmpName", b =>
+                {
+                    b.Property<int>("EmpNameId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("EmpNameId");
+
+                    b.ToTable("EmpNames");
+                });
+
             modelBuilder.Entity("API.Entities.EmpType", b =>
                 {
                     b.Property<int>("EmpTypeId")
@@ -72,15 +99,10 @@ namespace API.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("EmpTypeName")
                         .HasColumnType("nvarchar(40)");
 
                     b.HasKey("EmpTypeId");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("EmpTypes");
                 });
@@ -112,15 +134,10 @@ namespace API.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MajorName")
                         .HasColumnType("nvarchar(60)");
 
                     b.HasKey("MajorId");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Majors");
                 });
@@ -222,21 +239,25 @@ namespace API.Data.Migrations
                     b.ToTable("Positions");
                 });
 
+            modelBuilder.Entity("API.Entities.UserType", b =>
+                {
+                    b.Property<int>("UserTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserTypeId");
+
+                    b.ToTable("UserTypes");
+                });
+
             modelBuilder.Entity("API.Entities.College", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("Colleges")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.EmpType", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("EmpTypes")
+                        .WithMany()
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -247,18 +268,7 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.HomeCity", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("HomeCities")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("API.Entities.Major", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("Majors")
+                        .WithMany()
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -269,7 +279,7 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
-                        .WithMany("Photos")
+                        .WithMany()
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -290,16 +300,6 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
-                    b.Navigation("Colleges");
-
-                    b.Navigation("EmpTypes");
-
-                    b.Navigation("HomeCities");
-
-                    b.Navigation("Majors");
-
-                    b.Navigation("Photos");
-
                     b.Navigation("Positions");
                 });
 #pragma warning restore 612, 618

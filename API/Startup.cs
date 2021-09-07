@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
@@ -10,9 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 
 namespace API
 {
@@ -24,6 +27,7 @@ namespace API
             _config = config;
         }
 
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -33,8 +37,18 @@ namespace API
             {
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
-            services.AddControllers();
+
             services.AddCors();
+            // added JSON Serializer
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft
+                .Json.ReferenceLoopHandling.Ignore)
+                .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
+                = new DefaultContractResolver());
+
+            services.AddControllers();
+
 
             // services.AddSwaggerGen(c =>
             // {
@@ -63,6 +77,13 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+                RequestPath = "/Photos"
             });
         }
     }
