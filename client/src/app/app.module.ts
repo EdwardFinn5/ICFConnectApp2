@@ -15,6 +15,8 @@ import { AddEditComponent } from './students/add-edit/add-edit.component';
 import { MajorComponent } from './major/major.component';
 import { ShowMajComponent } from './major/show-maj/show-maj.component';
 import { AddEditMajComponent } from './major/add-edit-maj/add-edit-maj.component';
+import { SharedService } from './_services/shared.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,8 +37,10 @@ import { AddEditMajComponent } from './major/add-edit-maj/add-edit-maj.component
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
