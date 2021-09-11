@@ -12,7 +12,7 @@ export class SharedService {
   constructor(private http: HttpClient) {}
 
   getMajorList(): Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + 'majors');
+    return this.http.get<any>(this.APIUrl + '/majors');
   }
 
   addMajor(val: any) {
