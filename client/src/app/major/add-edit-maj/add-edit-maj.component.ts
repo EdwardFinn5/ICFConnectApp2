@@ -10,33 +10,34 @@ export class AddEditMajComponent implements OnInit {
   constructor(private service: SharedService) {}
 
   @Input() maj: any;
-  majorId: string;
-  majorName: string;
+  MajorId: string;
+  MajorName: string;
 
   ngOnInit(): void {
-    this.majorId = this.maj.MajorId;
-    this.majorName = this.maj.MajorName;
+    this.MajorId = this.maj.MajorId;
+    this.MajorName = this.maj.MajorName;
   }
 
   addMajor() {
     var val = {
-      MajorId: this.majorId,
-      MajorName: this.majorName,
+      MajorId: this.MajorId,
+      MajorName: this.MajorName,
     };
 
-    this.service.addMajor(val).subscribe((result) => {
-      alert(result.toString());
+    this.service.addMajor(val).subscribe((res) => {
+      alert('successfully added');
+      console.log(res);
     });
   }
 
-  UpdateMajor() {
+  updateMajor() {
     var val = {
-      MajorId: this.majorId,
-      MajorName: this.majorName,
+      MajorId: this.MajorId,
+      MajorName: this.MajorName,
     };
-
-    this.service.updateMajor(val).subscribe((result) => {
-      alert(result.toString());
+    console.log(val);
+    this.service.updateMajor(val).subscribe((res) => {
+      alert(res.toString());
     });
   }
 }

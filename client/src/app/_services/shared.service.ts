@@ -24,7 +24,7 @@ export class SharedService {
   }
 
   deleteMajor(val: any) {
-    return this.http.delete(this.APIUrl + '/majors/', val);
+    return this.http.delete(this.APIUrl + '/majors', val);
   }
 
   getUserList(): Observable<any[]> {

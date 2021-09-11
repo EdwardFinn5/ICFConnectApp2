@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zacha\\ICFConnectApp\\api\\API.csproj": {}
+    "C:\\Users\\zacha\\ICFConnectApp\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zacha\\ICFConnectApp\\api\\API.csproj": {
+    "C:\\Users\\zacha\\ICFConnectApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zacha\\ICFConnectApp\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\zacha\\ICFConnectApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\zacha\\ICFConnectApp\\api\\API.csproj",
+        "projectPath": "C:\\Users\\zacha\\ICFConnectApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\zacha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zacha\\ICFConnectApp\\api\\obj\\",
+        "outputPath": "C:\\Users\\zacha\\ICFConnectApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

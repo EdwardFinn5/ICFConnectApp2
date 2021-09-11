@@ -11,7 +11,7 @@ export class ShowMajComponent implements OnInit {
 
   majorList: any[];
   modalTitle: string;
-  activateAddEditMajComp: boolean;
+  activateAddEditMajComp: boolean = false;
   maj: any;
 
   ngOnInit(): void {
@@ -30,6 +30,15 @@ export class ShowMajComponent implements OnInit {
     this.maj = major;
     this.modalTitle = 'Edit Major';
     this.activateAddEditMajComp = true;
+  }
+
+  deleteClick(major: any) {
+    if (confirm('Are you sure??')) {
+      this.service.deleteMajor(major.MajorId).subscribe((data) => {
+        alert(data.toString());
+        this.refreshMajorList();
+      });
+    }
   }
 
   closeClick() {
