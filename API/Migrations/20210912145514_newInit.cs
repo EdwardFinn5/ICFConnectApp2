@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
-    public partial class newstart : Migration
+    public partial class newInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,8 @@ namespace API.Data.Migrations
                     UserType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmpName = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     EmpType = table.Column<string>(type: "nvarchar(200)", nullable: true),
-                    Major = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                    Major = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    PhotoFileName = table.Column<string>(type: "nvarchar(500)", nullable: true)
                 },
                 constraints: table =>
                 {

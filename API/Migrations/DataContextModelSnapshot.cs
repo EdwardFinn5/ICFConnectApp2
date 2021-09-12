@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -38,7 +38,7 @@ namespace API.Data.Migrations
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PhotoUrl")
+                    b.Property<string>("PhotoFileName")
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("UserType")

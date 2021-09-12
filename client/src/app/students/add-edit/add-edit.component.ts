@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/_services/shared.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { SharedService } from 'src/app/_services/shared.service';
   styleUrls: ['./add-edit.component.css'],
 })
 export class AddEditComponent implements OnInit {
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private router: Router) {}
 
   @Input() user: any;
   AppUserId: string;
@@ -75,5 +76,9 @@ export class AddEditComponent implements OnInit {
       this.PhotoFileName = data.toString();
       this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
     });
+  }
+
+  addMajor() {
+    this.router.navigateByUrl('/major');
   }
 }

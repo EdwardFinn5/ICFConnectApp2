@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210905204511_photoToUser")]
-    partial class photoToUser
+    [Migration("20210912145514_newInit")]
+    partial class newInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,7 @@ namespace API.Data.Migrations
                     b.Property<string>("Major")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PhotoUrl")
+                    b.Property<string>("PhotoFileName")
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("UserType")

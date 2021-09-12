@@ -26,15 +26,21 @@
 
 </div>
 
-<div class="ml-3 bd-highlight" style="width: 40%">
+<div class="ml-3 bd-highlight" style="width: 40%;">
     <img [src]=PhotoFilePath height="250px;" width="200px;">
-    <input type="file" (change)="uploadPhoto($event)" class="">
+    <input type="file" (change)="uploadPhoto($event)" class="mt-2">
 </div>
 </div>
 
-<button (click)="addUser()" *ngIf="user.AppUserId == 0" class="btn btn-primary">
-    Add
+<ng-container *ngIf="user.AppUserId == 0" >
+<button (click)="addUser()" class="btn btn-primary">
+    Add Student
 </button>
+<button (click)="addMajor()" class="btn btn-primary ml-2">
+    Add Major
+</button>
+
+</ng-container>
 
 <button (click)="updateUser()" *ngIf="user.AppUserId != 0" class="btn btn-primary">
     Update

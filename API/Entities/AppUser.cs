@@ -35,7 +35,7 @@ namespace API.Entities
         [Column(TypeName = "nvarchar(100)")]
         public string Major { get; set; }
         [Column(TypeName = "nvarchar(500)")]
-        public string PhotoUrl { get; set; }
+        public string PhotoFileName { get; set; }
 
         // public DateTime GradDate { get; set; }
         // [DataType(DataType.EmailAddress)]
