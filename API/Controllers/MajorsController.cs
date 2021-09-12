@@ -80,16 +80,31 @@ namespace API.Controllers
         // }
 
         // PUT: api/PaymentDetail/5
-        [HttpPut("{Id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutMajor(int id, Major major)
         {
-            // if (id != major.MajorId)
-            // {
-            //     return BadRequest();
-            // }
+            if (id != major.MajorId)
+            {
+                return BadRequest();
+            }
 
             _context.Entry(major).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MajorExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return NoContent();
         }

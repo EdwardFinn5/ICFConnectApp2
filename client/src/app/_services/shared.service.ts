@@ -20,15 +20,17 @@ export class SharedService {
   }
 
   updateMajor(val: any) {
+    console.log(val);
     return this.http.put(this.APIUrl + '/majors', val);
   }
 
   deleteMajor(val: any) {
-    return this.http.delete(this.APIUrl + '/majors', val);
+    console.log(val);
+    return this.http.delete(this.APIUrl + '/majors/' + val);
   }
 
   getUserList(): Observable<any[]> {
-    return this.http.get<any>(this.APIUrl + 'users');
+    return this.http.get<any>(this.APIUrl + '/users');
   }
 
   addUser(val: any) {

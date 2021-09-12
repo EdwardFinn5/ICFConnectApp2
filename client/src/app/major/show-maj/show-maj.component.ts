@@ -33,9 +33,12 @@ export class ShowMajComponent implements OnInit {
   }
 
   deleteClick(major: any) {
+    console.log(major);
+    console.log(major.MajorId);
     if (confirm('Are you sure??')) {
       this.service.deleteMajor(major.MajorId).subscribe((data) => {
-        alert(data.toString());
+        console.log(data);
+        alert('Deleted successfully');
         this.refreshMajorList();
       });
     }

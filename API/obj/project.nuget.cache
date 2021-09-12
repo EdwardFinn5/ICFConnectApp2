@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pC10JgCKcnKwtGp2/isejeegBePiAMsnz/gQSBtANZtkzBwuYk1rz8vXTIzm2V0ZK2PwAPNeBOSocSr1nIPlPQ==",
+  "dgSpecHash": "FrZBniACOQLJ6v5IX7J+uJ+hwHfX5P2BaFnVpUp+obV2J3qtQkHIfMKi6p5q3PE8+KyphWg+y+Z+KHvSpz3TmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zacha\\ICFConnectApp\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\zacha\\ICFConnectApp\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zacha\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\zacha\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.9\\microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",

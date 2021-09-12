@@ -36,8 +36,9 @@ export class AddEditMajComponent implements OnInit {
       MajorName: this.MajorName,
     };
     console.log(val);
+    console.log(val);
     this.service.updateMajor(val).subscribe((res) => {
-      alert(res.toString());
+      alert('updated successfully');
     });
   }
 }
