@@ -12,7 +12,7 @@ export class AddEditComponent implements OnInit {
 
   @Input() user: any;
   AppUserId: string;
-  FirstName: string;
+  UserName: string;
   UserType: string;
   Major: string;
   PhotoFileName: string;
@@ -29,7 +29,7 @@ export class AddEditComponent implements OnInit {
       this.majorsList = data;
 
       this.AppUserId = this.user.AppUserId;
-      this.FirstName = this.user.FirstName;
+      this.UserName = this.user.UserName;
       this.UserType = this.user.UserType;
       this.Major = this.user.Major;
       this.PhotoFileName = this.user.PhotoFileName;
@@ -40,7 +40,7 @@ export class AddEditComponent implements OnInit {
   addUser() {
     var val = {
       AppUserId: this.AppUserId,
-      FirstName: this.FirstName,
+      UserName: this.UserName,
       UserType: this.UserType,
       Major: this.Major,
       PhotoFileName: this.PhotoFileName,
@@ -55,7 +55,7 @@ export class AddEditComponent implements OnInit {
   updateUser() {
     var val = {
       AppUserId: this.AppUserId,
-      FirstName: this.FirstName,
+      UserName: this.UserName,
       UserType: this.UserType,
       Major: this.Major,
       PhotoFileName: this.PhotoFileName,

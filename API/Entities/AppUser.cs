@@ -9,8 +9,8 @@ namespace API.Entities
     {
         [Key]
         public int AppUserId { get; set; }
-        // [DataType(DataType.EmailAddress)]
-        // public string UserName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string UserName { get; set; }
         [Column(TypeName = "nvarchar(30)")]
         public string FirstName { get; set; }
         // [Column(TypeName = "nvarchar(30)")]
